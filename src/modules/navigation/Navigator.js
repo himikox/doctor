@@ -6,9 +6,9 @@ import {
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import NavigatorView from './RootNavigation';
-
+import Welcome from "../welcome/Welcome"
 import AvailableInFullVersion from '../../modules/availableInFullVersion/AvailableInFullVersionViewContainer';
-
+import Login from "../login/Login"
 const iconHome = require('../../../assets/images/drawer/home.png');
 const iconCalendar = require('../../../assets/images/drawer/calendar.png');
 const iconGrids = require('../../../assets/images/drawer/grids.png');
@@ -23,7 +23,7 @@ const drawerData = [
     icon: iconHome,
   },
   {
-    name: 'Calendar',
+    name: 'Welcome',
     icon: iconCalendar,
   },
   {
@@ -93,10 +93,10 @@ function CustomDrawerContent(props) {
               style={{ width: 20, height: 20}}
               source={iconSettings} 
             />
-            <Text style={styles.menuTitle}>Settings</Text>
+            <Text style={styles.menuTitle}>Disconnect</Text>
           </View>
         )}
-        onPress={() => props.navigation.navigate('Calendar')}
+        onPress={() => props.navigation.navigate('Welcome')}
       />
     </DrawerContentScrollView>
   );
