@@ -107,7 +107,7 @@ export default function App() {
   return (
     <Drawer.Navigator
       drawerStyle={{
-        backgroundColor: '#3C38B1',
+        backgroundColor: '#387F9D',
       }}
       drawerContent={props => <CustomDrawerContent {...props} />}
     >

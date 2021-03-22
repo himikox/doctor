@@ -1,17 +1,20 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import { StyleSheet, View, Text, ScrollView , Image} from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Entypo';
+import OutlineInput from 'react-native-outline-input';
 import { colors, fonts } from '../../styles';
-
+import { SafeAreaView } from 'react-native';
 import { Button, RadioGroup, Dropdown } from '../../components';
 
 export default function WelcomeScreen({navigation}) {
 //const Welcome = ({navigation}) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     return (
-        <ScrollView
+        <SafeAreaView
             style={styles.container}
             contentContainerStyle={{ paddingBottom: 20 }}
         >
@@ -21,33 +24,55 @@ export default function WelcomeScreen({navigation}) {
                     style={{
                         width: 200,
                         height: 200,
-                        marginTop: 100
+                        marginTop: 50
 
                     }}
                 />
             </View>
-
+            <View style = {{
+                marginBottom: 30, paddingHorizontal: 16,
+            }}>
+            <OutlineInput
+                value={email}
+                onChangeText={(e: string) => setEmail(e)}
+                label="Email"
+                activeValueColor="#1174A7"
+                activeBorderColor="#1174A7"
+                activeLabelColor="#1174A7"
+                passiveBorderColor="#1174A7"
+                passiveLabelColor="#1174A7"
+                passiveValueColor="#1174A7"
+            />
+            </View>
+            <View style = {{ marginBottom: 10,paddingHorizontal: 16,
+                }}>
+            <OutlineInput
+                value={password}
+                onChangeText={(e: string) => setPassword(e)}
+                label="Password"
+                activeValueColor="#1174A7"
+                activeBorderColor="#1174A7"
+                activeLabelColor="#1174A7"
+                passiveBorderColor="#1174A7"
+                passiveLabelColor="#1174A7"
+                passiveValueColor="#1174A7"
+            />
+            </View>
             <View style={styles.componentsSection}>
 
 
                 <View style={styles.demoButtonsContainer}>
                     <Button
                         style={[styles.demoButton, {flexBasis: '50%'}]}
-                        primary
+                        secondary
                         bordered
                         caption="Login"
                         onPress={() => navigation.navigate('Login')}
                     />
-                    <Button
-                        style={[styles.demoButton, {flexBasis: '50%'}]}
-                        secondary
-                        bordered
-                        caption="Register"
-                        onPress={() => navigation.navigate('AppView')}
-                    />
+
                 </View>
             </View>
-        </ScrollView>
+        </SafeAreaView>
     );
 }
 const styles = StyleSheet.create({
@@ -65,6 +90,12 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 5,
         alignItems: 'center'
+    },
+    section: {
+        flex: 1,
+        paddingHorizontal: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     componentSectionHeader: {
         fontFamily: fonts.primaryRegular,

@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-
+import { ThemeProvider } from 'styled-components';
 import { fonts, colors } from '../../styles';
 import { Text } from '../../components/StyledText';
 import ChatBot from 'react-native-chatbot';
@@ -20,21 +20,43 @@ export default function HomeScreen({ isExtended, setIsExtended }) {
   //     }
   //   });
   // };
-  const steps = [
-    {
-      id: '0',
-      message: 'Welcome to react chatbot!',
-      trigger: '1',
-    },
-    {
-      id: '1',
-      message: 'Bye!',
-      end: true,
-    },
-  ];
+  const theme = {
+    background: '#f5f8fb',
+    fontFamily: 'Helvetica Neue',
+    headerBgColor: '#4BC1FD',
+    headerFontColor: '#fff',
+    headerFontSize: '15px',
+    botBubbleColor: '#4BC1FD',
+    botFontColor: '#fff',
+    userBubbleColor: '#fff',
+    userFontColor: '#4a4a4a',
+  };
+
   return (
     <View style={styles.container}>
-      <ChatBot steps={steps} />
+      <ThemeProvider theme={theme}>
+      <ChatBot
+          headerTitle="Speech Recognition"
+          recognitionEnable={true}
+          steps={[
+            {
+              id: '1',
+              message: 'What is your name?',
+              trigger: '2',
+            },
+            {
+              id: '2',
+              user: true,
+              trigger: '3',
+            },
+            {
+              id: '3',
+              message: 'Hi {previousValue}, nice to meet you!',
+              end: true,
+            },
+          ]}
+      />
+      </ThemeProvider>
     </View>
   );
 }
