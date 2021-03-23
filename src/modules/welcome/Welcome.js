@@ -6,10 +6,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Entypo';
 import OutlineInput from 'react-native-outline-input';
 import { colors, fonts } from '../../styles';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView,TouchableOpacity } from 'react-native';
 import { Button, RadioGroup, Dropdown } from '../../components';
 
-export default function WelcomeScreen({navigation}) {
+export default function Welcome({onSignIn}) {
 //const Welcome = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -58,6 +58,9 @@ export default function WelcomeScreen({navigation}) {
                 passiveValueColor="#1174A7"
             />
             </View>
+            <TouchableOpacity  >
+                <Text >Forgot Password?</Text>
+            </TouchableOpacity>
             <View style={styles.componentsSection}>
 
 
@@ -67,7 +70,7 @@ export default function WelcomeScreen({navigation}) {
                         secondary
                         bordered
                         caption="Login"
-                        onPress={() => navigation.navigate('Login')}
+                        onPress={onSignIn}
                     />
 
                 </View>

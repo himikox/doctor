@@ -51,10 +51,11 @@ export default function App() {
                   ) :
                   (
                       <>
-                          <RootStack.Screen name="Welcome" component={Welcome} options={{headerShown: false}} />
-                          <RootStack.Screen name="Login">
+
+                          <RootStack.Screen name="Welcome" >
                               {(props) => (
-                                  <Login {...props} onSignIn={handleSignIn} />
+                                  <Welcome {...props} onSignIn={handleSignIn} />
+
                               )}
                           </RootStack.Screen>
                       </>
